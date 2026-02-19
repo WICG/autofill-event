@@ -108,3 +108,5 @@ For example, an Autofill implementation might not support refills only for addre
 ##  2. "full-address"
 
 We are also proposing a "full-address" `autocomplete` attribute value on the form, that would enable the browser to ask permissions for the user's full address, beyond the fields that are present in the current form.
+
+[Security Questionnaire](https://github.com/WICG/autofill-event/blob/main/security_questionnaire.md)
