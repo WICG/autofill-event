@@ -11,9 +11,10 @@ One key example is address autofill which, when implemented correctly, is a dyna
 The ‘industry standard’ solution for this requires use of hidden form fields that try to anticipate and capture the right information and then surface it to the user. This solution is brittle and complex. Worse, it entrenches use of hidden fields to power legitimate use cases, but the same technique can be and is also often abused by bad actors.
 
 We think we can improve autofill and it’s value on all fronts:
-Users: make it more reliable and pave the path for potential deprecation of filling of hidden fields
-Site developers: standardize API and behavior to simplify implementation for site owners
-Autofill providers: give 3P autofill providers hooks that work seamlessly with new API
+
+* Users: make it more reliable and pave the path for potential deprecation of filling of hidden fields
+* Site developers: standardize API and behavior to simplify implementation for site owners
+* Autofill providers: give 3P autofill providers hooks that work seamlessly with new API
 
 
 # Proposal
