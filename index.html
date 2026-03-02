@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
   <link href="https://wicg.github.io/autofill-event/" rel="canonical">
-  <meta content="d1c510034655733e450c5be94be3574514e0e9d4" name="revision">
+  <meta content="51153d4221f38e477a2728e1030d7227fea0fa49" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -737,7 +737,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
   <div class="head">
    <h1 class="no-ref p-name" id="title">Autofill Event</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2026-02-19">19 February 2026</time></p>
+    <time class="dt-updated" datetime="2026-03-02">2 March 2026</time></p>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -999,7 +999,7 @@ to the user agent that the form structure has been modified and autofill should 
    <p>Each <code class="idl"><a data-link-type="idl" href="#autofillevent" id="ref-for-autofillevent③">AutofillEvent</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="AutofillEvent" data-dfn-type="dfn" data-noexport id="autofillevent-allow-refill-flag">allow refill flag</dfn>
 (a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#boolean" id="ref-for-boolean">boolean</a>), initially true.</p>
    <p>Each <code class="idl"><a data-link-type="idl" href="#autofillevent" id="ref-for-autofillevent④">AutofillEvent</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="AutofillEvent" data-dfn-type="dfn" data-noexport id="autofillevent-dispatch-timestamp">dispatch timestamp</dfn>
-(a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/hr-time/#dom-domhighrestimestamp" id="ref-for-dom-domhighrestimestamp">DOMHighResTimeStamp</a></code>), initially 0.</p>
+(a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp" id="ref-for-typedefdef-domhighrestimestamp">DOMHighResTimeStamp</a></code>), initially 0.</p>
    <p>Each <code class="idl"><a data-link-type="idl" href="#autofillevent" id="ref-for-autofillevent⑤">AutofillEvent</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="AutofillEvent" data-dfn-type="dfn" data-noexport id="autofillevent-refill-pending-flag">refill pending flag</dfn>
 (a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#boolean" id="ref-for-boolean①">boolean</a>), initially false.</p>
    <h2 class="heading settled" data-level="4" id="processing-model"><span class="secno">4. </span><span class="content">Processing Model</span><a class="self-link" href="#processing-model"></a></h2>
@@ -1023,7 +1023,7 @@ To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fire-an-autofi
      <li data-md>
       <p>Set <var>event</var>’s <a data-link-type="dfn" href="#autofillevent-allow-refill-flag" id="ref-for-autofillevent-allow-refill-flag">allow refill flag</a> to <var>allowRefill</var>.</p>
      <li data-md>
-      <p>Set <var>event</var>’s <a data-link-type="dfn" href="#autofillevent-dispatch-timestamp" id="ref-for-autofillevent-dispatch-timestamp">dispatch timestamp</a> to the <a data-link-type="dfn" href="https://w3c.github.io/hr-time/#dfn-current-high-resolution-time" id="ref-for-dfn-current-high-resolution-time">current high resolution time</a>.</p>
+      <p>Set <var>event</var>’s <a data-link-type="dfn" href="#autofillevent-dispatch-timestamp" id="ref-for-autofillevent-dispatch-timestamp">dispatch timestamp</a> to the <a data-link-type="dfn" href="https://w3c.github.io/hr-time/#current-high-resolution-time" id="ref-for-current-high-resolution-time">current high resolution time</a>.</p>
      <li data-md>
       <p><a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-dispatch" id="ref-for-concept-event-dispatch①">Dispatch</a> <var>event</var> at <var>document</var>.</p>
      <li data-md>
@@ -1041,7 +1041,7 @@ To <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="process-a-refill
 
     <ol>
      <li data-md>
-      <p>Let <var>now</var> be the <a data-link-type="dfn" href="https://w3c.github.io/hr-time/#dfn-current-high-resolution-time" id="ref-for-dfn-current-high-resolution-time①">current high resolution time</a>.</p>
+      <p>Let <var>now</var> be the <a data-link-type="dfn" href="https://w3c.github.io/hr-time/#current-high-resolution-time" id="ref-for-current-high-resolution-time①">current high resolution time</a>.</p>
      <li data-md>
       <p>Let <var>elapsed</var> be <var>now</var> minus <var>event</var>’s <a data-link-type="dfn" href="#autofillevent-dispatch-timestamp" id="ref-for-autofillevent-dispatch-timestamp①">dispatch timestamp</a>.</p>
      <li data-md>
@@ -1200,8 +1200,8 @@ ensuring consistent behavior regardless of the autofill source.</p>
    <li>
     <a data-link-type="biblio">[HR-TIME-3]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="0e9f636b">DOMHighResTimeStamp</span>
-     <li><span class="dfn-paneled" id="7e7cc1d8">current high resolution time</span>
+     <li><span class="dfn-paneled" id="00c8c5e6">DOMHighResTimeStamp</span>
+     <li><span class="dfn-paneled" id="20b5722b">current high resolution time</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
@@ -1475,9 +1475,10 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
+"00c8c5e6": {"dfnID":"00c8c5e6","dfnText":"DOMHighResTimeStamp","external":true,"refSections":[{"refs":[{"id":"ref-for-typedefdef-domhighrestimestamp"}],"title":"3.1. Attributes"}],"url":"https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp"},
 "0c0ceb78": {"dfnID":"0c0ceb78","dfnText":"bubbles","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-event-bubbles"}],"title":"4.1. Firing the Autofill Event"}],"url":"https://dom.spec.whatwg.org/#dom-event-bubbles"},
-"0e9f636b": {"dfnID":"0e9f636b","dfnText":"DOMHighResTimeStamp","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-domhighrestimestamp"}],"title":"3.1. Attributes"}],"url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
 "1372f92a": {"dfnID":"1372f92a","dfnText":"dispatch","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-event-dispatch"}],"title":"3. The AutofillEvent Interface"},{"refs":[{"id":"ref-for-concept-event-dispatch\u2460"}],"title":"4.1. Firing the Autofill Event"}],"url":"https://dom.spec.whatwg.org/#concept-event-dispatch"},
+"20b5722b": {"dfnID":"20b5722b","dfnText":"current high resolution time","external":true,"refSections":[{"refs":[{"id":"ref-for-current-high-resolution-time"}],"title":"4.1. Firing the Autofill Event"},{"refs":[{"id":"ref-for-current-high-resolution-time\u2460"}],"title":"4.2. Processing a Refill Request"}],"url":"https://w3c.github.io/hr-time/#current-high-resolution-time"},
 "343389cf": {"dfnID":"343389cf","dfnText":"Event","external":true,"refSections":[{"refs":[{"id":"ref-for-interface-event"}],"title":"3. The AutofillEvent Interface"}],"url":"https://dom.spec.whatwg.org/#interface-event"},
 "36858240": {"dfnID":"36858240","dfnText":"boolean","external":true,"refSections":[{"refs":[{"id":"ref-for-boolean"},{"id":"ref-for-boolean\u2460"}],"title":"3.1. Attributes"},{"refs":[{"id":"ref-for-boolean\u2461"}],"title":"4.1. Firing the Autofill Event"}],"url":"https://infra.spec.whatwg.org/#boolean"},
 "3b90bdcd": {"dfnID":"3b90bdcd","dfnText":"resolve","external":true,"refSections":[{"refs":[{"id":"ref-for-resolve"}],"title":"4.2. Processing a Refill Request"}],"url":"https://webidl.spec.whatwg.org/#resolve"},
@@ -1488,7 +1489,6 @@ let dfnPanelData = {
 "649608b9": {"dfnID":"649608b9","dfnText":"list","external":true,"refSections":[{"refs":[{"id":"ref-for-list"},{"id":"ref-for-list\u2460"}],"title":"3.1. Attributes"},{"refs":[{"id":"ref-for-list\u2461"}],"title":"4.1. Firing the Autofill Event"}],"url":"https://infra.spec.whatwg.org/#list"},
 "6c6b1005": {"dfnID":"6c6b1005","dfnText":"any","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-any"}],"title":"3. The AutofillEvent Interface"}],"url":"https://webidl.spec.whatwg.org/#idl-any"},
 "797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"},{"id":"ref-for-invalidstateerror\u2461"}],"title":"4.2. Processing a Refill Request"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
-"7e7cc1d8": {"dfnID":"7e7cc1d8","dfnText":"current high resolution time","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-current-high-resolution-time"}],"title":"4.1. Firing the Autofill Event"},{"refs":[{"id":"ref-for-dfn-current-high-resolution-time\u2460"}],"title":"4.2. Processing a Refill Request"}],"url":"https://w3c.github.io/hr-time/#dfn-current-high-resolution-time"},
 "860300d4": {"dfnID":"860300d4","dfnText":"implementation-defined","external":true,"refSections":[{"refs":[{"id":"ref-for-implementation-defined"}],"title":"2.1. Autofill Value Entries"},{"refs":[{"id":"ref-for-implementation-defined\u2460"}],"title":"4.1. Firing the Autofill Event"},{"refs":[{"id":"ref-for-implementation-defined\u2461"},{"id":"ref-for-implementation-defined\u2462"}],"title":"4.2. Processing a Refill Request"}],"url":"https://infra.spec.whatwg.org/#implementation-defined"},
 "8855a9aa": {"dfnID":"8855a9aa","dfnText":"DOMString","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-DOMString"}],"title":"2.1. Autofill Value Entries"},{"refs":[{"id":"ref-for-idl-DOMString\u2460"}],"title":"3. The AutofillEvent Interface"},{"refs":[{"id":"ref-for-idl-DOMString\u2461"}],"title":"3.1. Attributes"}],"url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "889e932f": {"dfnID":"889e932f","dfnText":"Exposed","external":true,"refSections":[{"refs":[{"id":"ref-for-Exposed"}],"title":"3. The AutofillEvent Interface"}],"url":"https://webidl.spec.whatwg.org/#Exposed"},
@@ -1946,8 +1946,8 @@ let refsData = {
 "https://infra.spec.whatwg.org/#boolean": {"displayText":"boolean","export":true,"for_":[],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"boolean","type":"dfn","url":"https://infra.spec.whatwg.org/#boolean"},
 "https://infra.spec.whatwg.org/#implementation-defined": {"displayText":"implementation-defined","export":true,"for_":[],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"implementation-defined","type":"dfn","url":"https://infra.spec.whatwg.org/#implementation-defined"},
 "https://infra.spec.whatwg.org/#list": {"displayText":"list","export":true,"for_":[],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"list","type":"dfn","url":"https://infra.spec.whatwg.org/#list"},
-"https://w3c.github.io/hr-time/#dfn-current-high-resolution-time": {"displayText":"current high resolution time","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"current high resolution time","type":"dfn","url":"https://w3c.github.io/hr-time/#dfn-current-high-resolution-time"},
-"https://w3c.github.io/hr-time/#dom-domhighrestimestamp": {"displayText":"DOMHighResTimeStamp","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"DOMHighResTimeStamp","type":"typedef","url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
+"https://w3c.github.io/hr-time/#current-high-resolution-time": {"displayText":"current high resolution time","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"current high resolution time","type":"dfn","url":"https://w3c.github.io/hr-time/#current-high-resolution-time"},
+"https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp": {"displayText":"DOMHighResTimeStamp","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"DOMHighResTimeStamp","type":"typedef","url":"https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp"},
 "https://webidl.spec.whatwg.org/#Exposed": {"displayText":"Exposed","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Exposed","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#Exposed"},
 "https://webidl.spec.whatwg.org/#a-new-promise": {"displayText":"a new promise","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"a new promise","type":"dfn","url":"https://webidl.spec.whatwg.org/#a-new-promise"},
 "https://webidl.spec.whatwg.org/#a-promise-rejected-with": {"displayText":"a promise rejected with","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"a promise rejected with","type":"dfn","url":"https://webidl.spec.whatwg.org/#a-promise-rejected-with"},
