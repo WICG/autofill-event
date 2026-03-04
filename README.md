@@ -45,7 +45,6 @@ interface DocumentEventMap {
 
 interface AutofillEvent extends Event {
   readonly values:         ReadonlyArray<readonly [HTMLElement, string | boolean]>;
-  readonly triggerElement: HTMLElement | null;
   readonly refill:         () => Promise<void> | null;
 }
 ```
@@ -64,9 +63,6 @@ an event handler changes or removes the element;
 the element is an `<input maxlength=123>` and the value exceeds the maximum length;
 the element is an `<input type=color>` and the value is not a CSS color;
 the element is a `<select>` and none of its `<option>` matches the given value.
-
-The event's `triggerElement` is usually the element from which the user triggered the Autofill event.
-It is `null` if the autofill was not triggered from any `HTMLElement` in that `document`.
 
 The element types are `HTMLElement` instead of `HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement ...` because of contenteditable and form-associated custom elements.
 
