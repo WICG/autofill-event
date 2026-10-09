@@ -340,6 +340,12 @@ This section defines the integration with [[WEBDRIVER-BIDI]] for automated testi
 The <dfn export>autofill module</dfn> contains functionality for triggering autofill programmatically 
 in automated testing scenarios.
 
+<pre highlight="cddl" class="cddl" data-cddl-module="remote-cddl">
+AutofillCommand = (
+  autofill.Trigger
+)
+</pre>
+
 ### The autofill.trigger Command ### {#webdriver-bidi-trigger}
 
 The <dfn export>autofill.trigger</dfn> command triggers [=autofill=] on a particular form field 
@@ -348,7 +354,7 @@ using the provided data.
 <dl>
   <dt>Command Type</dt>
   <dd>
-    <pre highlight="cddl">
+    <pre highlight="cddl" class="cddl" data-cddl-module="remote-cddl">
 autofill.Trigger = (
   method: "autofill.trigger",
   params: autofill.TriggerParameters
@@ -423,7 +429,7 @@ The remote end steps with |session| and |command parameters| are:
 1. Let |realm| be |environment settings|'s [=realm execution context=]'s Realm component.
 1. Let |element id| be the value of the `element` field of |command parameters|.
 1. Let |element| be the result of trying to deserialize remote reference with |element id|, |realm|, and |session|.
-1. If |element| is not a [=form control=] or |element|'s form owner is null, return an error with error code "invalid element state".
+1. If |element| is not a [=form control=] or |element|'s form owner is null, return an error with error code "invalid argument".
 1. Let |card| be the value of the `card` field of |command parameters| if present, or null otherwise.
 1. Let |address| be the value of the `address` field of |command parameters| if present, or null otherwise.
 1. If both |card| and |address| are not null, return an error with error code "invalid argument".
