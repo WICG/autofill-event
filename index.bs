@@ -442,13 +442,7 @@ The remote end steps with |session| and |command parameters| are:
 1. Let |parsed card| be the result of parsing |card| as an <code>autofill.Card</code>.
 1. Let |parsed address| be the result of parsing |address| as an <code>autofill.Address</code>.
 1. If |parsed address| is not null and contains a field whose name the user agent does not support, return an error with error code "unsupported operation".
-
-    Note: For example, a user agent that only stores whole telephone numbers might not support their parts, such as "<code>tel-area-code</code>".
-
 1. If the user agent cannot [=autofill=] |element|, return an error with error code "invalid argument".
-
-    Note: For example, an <{input}> element whose <{input/type}> attribute is in the Hidden state cannot be autofilled.
-
 1. The user agent should [=autofill=] |element| and |element|'s [=form owner=], while taking into account the contents of |parsed card| and |parsed address|.
 1. Return success with data null.
 
