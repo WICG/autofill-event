@@ -433,7 +433,7 @@ The remote end steps with |session| and |command parameters| are:
 1. Let |realm| be |environment settings|'s [=realm execution context=]'s Realm component.
 1. Let |element id| be the value of the `element` field of |command parameters|.
 1. Let |element| be the result of trying to deserialize remote reference with |element id|, |realm|, and |session|.
-1. If |element| is not a [=form control=] or |element|'s form owner is null, return an error with error code "invalid argument".
+1. If |element| is not an <{input}>, <{select}>, or <{textarea}> element, or |element|'s [=form owner=] is null, return an error with error code "invalid argument".
 1. Let |card| be the value of the `card` field of |command parameters| if present, or null otherwise.
 1. Let |address| be the value of the `address` field of |command parameters| if present, or null otherwise.
 1. If both |card| and |address| are not null, return an error with error code "invalid argument".
@@ -441,7 +441,15 @@ The remote end steps with |session| and |command parameters| are:
 1. If the user agent is unable to perform [=autofill=], return an error with error code "unsupported operation".
 1. Let |parsed card| be the result of parsing |card| as an <code>autofill.Card</code>.
 1. Let |parsed address| be the result of parsing |address| as an <code>autofill.Address</code>.
-1. The user agent should [=autofill=] |element| and |element|'s form owner, while taking into account the contents of |parsed card| and |parsed address|.
+1. If |parsed address| is not null and contains a field whose name the user agent does not support, return an error with error code "unsupported operation".
+
+    Note: For example, a user agent that only stores whole telephone numbers might not support their parts, such as "<code>tel-area-code</code>".
+
+1. If the user agent cannot [=autofill=] |element|, return an error with error code "invalid argument".
+
+    Note: For example, an <{input}> element whose <{input/type}> attribute is in the Hidden state cannot be autofilled.
+
+1. The user agent should [=autofill=] |element| and |element|'s [=form owner=], while taking into account the contents of |parsed card| and |parsed address|.
 1. Return success with data null.
 
 </div>
