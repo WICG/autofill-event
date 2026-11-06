@@ -101,10 +101,10 @@ document.addEventListener('autofill', async function(event) {
   let formElement = null;
   
   // Find the country element and value
-  for (const [element, value] of event.autofillValues) {
-    if (element.autocomplete === 'country') {
+  for (const {field, value} of event.autofillValues) {
+    if (field.autocomplete === 'country') {
       countryValue = value;
-      formElement = element.form;
+      formElement = field.form;
       break;
     }
   }
@@ -149,7 +149,8 @@ document.addEventListener('autofill', async function(event) {
 ```
 
 The {{AutofillEvent/autofillValues}} attribute returns a list of [=autofill value entries=], where each 
-entry is a tuple of the target {{HTMLElement}} and the value to be filled. The developer can 
+entry holds the target {{HTMLElement}} as its {{AutofillValueEntry/field}} and the value to be filled as its 
+{{AutofillValueEntry/value}}. The developer can 
 iterate over these entries to inspect the pending autofill data and determine if the form needs 
 to be adapted.
 
@@ -165,9 +166,9 @@ Note: The {{AutofillEvent/refill}} attribute is `null` on the second dispatch of
 
 ## Autofill Value Entries ## {#autofill-values-concept}
 
-An <dfn>autofill value entry</dfn> is a tuple consisting of:
-1. An {{HTMLElement}} — the [=form control=] that will receive the autofilled value
-2. A {{DOMString}} — the value from the user's autofill profile to be filled
+An <dfn>autofill value entry</dfn> is a [=struct=] consisting of:
+1. A <dfn for="autofill value entry">field</dfn>, an {{HTMLElement}} — the [=form control=] that will receive the autofilled value
+2. A <dfn for="autofill value entry">value</dfn>, a {{DOMString}} — the value from the user's autofill profile to be filled
 
 The user agent matches form controls to autofill data based on the control's 
 {{autocomplete}} attribute (see [=autofill field name=] in [[HTML]]).
@@ -196,9 +197,10 @@ dictionary AutofillEventInit : EventInit {
   boolean allowRefill = true;
 };
 
-typedef sequence&lt;any&gt; AutofillValueEntry;
-// AutofillValueEntry is a tuple of [HTMLElement, DOMString]
-// where the first element is the form control and the second is the value to fill
+dictionary AutofillValueEntry {
+  required HTMLElement field;
+  required DOMString value;
+};
 </pre>
 
 The {{AutofillEvent}} interface represents an event that is [=dispatch|dispatched=] when the 
@@ -207,8 +209,10 @@ user agent is about to [=autofill=] form fields.
 ## Attributes ## {#autofill-event-attributes}
 
 The <dfn attribute for=AutofillEvent>autofillValues</dfn> attribute returns a list of 
-[=autofill value entries=]. Each entry is a tuple where the first element is an {{HTMLElement}} 
-(the form control to be filled) and the second element is a {{DOMString}} (the value to fill).
+[=autofill value entries=]. Each entry is represented as an {{AutofillValueEntry}} dictionary, whose 
+<dfn dict-member for=AutofillValueEntry>field</dfn> member is the entry's [=autofill value entry/field=] 
+(the form control to be filled) and whose <dfn dict-member for=AutofillValueEntry>value</dfn> member is 
+the entry's [=autofill value entry/value=] (the value to fill).
 
 The <dfn attribute for=AutofillEvent>refill</dfn> attribute returns a {{RefillCallback}} or 
 `null`. When not `null`, calling this callback returns a {{Promise}} that, when awaited, signals 
@@ -241,7 +245,7 @@ To <dfn>fire an autofill event</dfn> given a [=document=] |document|, a [=list=]
 
 1. Let |event| be the result of [=creating an event=] using {{AutofillEvent}}.
 1. Initialize |event|'s {{Event/type}} attribute to "<code>autofill</code>".
-1. Initialize |event|'s {{Event/bubbles}} attribute to true.
+1. Initialize |event|'s {{Event/bubbles}} attribute to false.
 1. Initialize |event|'s {{Event/cancelable}} attribute to false.
 1. Set |event|'s [=AutofillEvent/autofill values list=] to |entries|.
 1. Set |event|'s [=AutofillEvent/allow refill flag=] to |allowRefill|.
